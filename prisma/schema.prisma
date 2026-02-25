@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Player {
+  id        Int      @id @default(autoincrement())
+  uuid      String   @unique
+  name      String
+  health    Int
+  hunger    Int
+  level     Int
+  dimension String
+  x         Int
+  y         Int
+  z         Int
+  updated   DateTime @updatedAt
+}
+
+model CommandQueue {
+  id        Int      @id @default(autoincrement())
+  type      String   // ban | kick | msg
+  target    String   // player name
+  reason    String?
+  executed  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
