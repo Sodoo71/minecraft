@@ -136,9 +136,9 @@ npm install
 cp .env.example .env.local
 
 # Edit with your values
-DATABASE_URL="postgresql://user:pass@localhost:5432/minecraft"
-MINECRAFT_API_URL="http://your-mc-server:8080"
-MINECRAFT_API_KEY="your-secret-key"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_c3RyaWtpbmctb3lzdGVyLTY2LmNsZXJrLmFjY291bnRzLmRldiQ"
+CLERK_SECRET_KEY="sk_test_HTfzEmnXLmwsdis90J5mIHp88WoLQvfUuF2z7d130g"
+DATABASE_URL="postgresql://neondb_owner:npg_TLInimCqag85@ep-red-frog-a1a4dtpd-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 ```
 
 ### 3. Setup Database
