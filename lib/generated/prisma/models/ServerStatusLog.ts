@@ -60,7 +60,8 @@ export type ServerStatusLogMinAggregateOutputType = {
   memoryUsagePercent: number | null
   onlinePlayers: number | null
   maxPlayers: number | null
-  serverVersion: string | null
+  motd: string | null
+  version: string | null
   timestamp: Date | null
 }
 
@@ -74,7 +75,8 @@ export type ServerStatusLogMaxAggregateOutputType = {
   memoryUsagePercent: number | null
   onlinePlayers: number | null
   maxPlayers: number | null
-  serverVersion: string | null
+  motd: string | null
+  version: string | null
   timestamp: Date | null
 }
 
@@ -88,7 +90,8 @@ export type ServerStatusLogCountAggregateOutputType = {
   memoryUsagePercent: number
   onlinePlayers: number
   maxPlayers: number
-  serverVersion: number
+  motd: number
+  version: number
   timestamp: number
   _all: number
 }
@@ -128,7 +131,8 @@ export type ServerStatusLogMinAggregateInputType = {
   memoryUsagePercent?: true
   onlinePlayers?: true
   maxPlayers?: true
-  serverVersion?: true
+  motd?: true
+  version?: true
   timestamp?: true
 }
 
@@ -142,7 +146,8 @@ export type ServerStatusLogMaxAggregateInputType = {
   memoryUsagePercent?: true
   onlinePlayers?: true
   maxPlayers?: true
-  serverVersion?: true
+  motd?: true
+  version?: true
   timestamp?: true
 }
 
@@ -156,7 +161,8 @@ export type ServerStatusLogCountAggregateInputType = {
   memoryUsagePercent?: true
   onlinePlayers?: true
   maxPlayers?: true
-  serverVersion?: true
+  motd?: true
+  version?: true
   timestamp?: true
   _all?: true
 }
@@ -249,15 +255,16 @@ export type ServerStatusLogGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 
 export type ServerStatusLogGroupByOutputType = {
   id: number
-  tps1m: number
-  tps5m: number
-  tps15m: number
-  memoryUsed: number
-  memoryMax: number
-  memoryUsagePercent: number
-  onlinePlayers: number
-  maxPlayers: number
-  serverVersion: string
+  tps1m: number | null
+  tps5m: number | null
+  tps15m: number | null
+  memoryUsed: number | null
+  memoryMax: number | null
+  memoryUsagePercent: number | null
+  onlinePlayers: number | null
+  maxPlayers: number | null
+  motd: string | null
+  version: string | null
   timestamp: Date
   _count: ServerStatusLogCountAggregateOutputType | null
   _avg: ServerStatusLogAvgAggregateOutputType | null
@@ -286,29 +293,31 @@ export type ServerStatusLogWhereInput = {
   OR?: Prisma.ServerStatusLogWhereInput[]
   NOT?: Prisma.ServerStatusLogWhereInput | Prisma.ServerStatusLogWhereInput[]
   id?: Prisma.IntFilter<"ServerStatusLog"> | number
-  tps1m?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  tps5m?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  tps15m?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  memoryUsed?: Prisma.IntFilter<"ServerStatusLog"> | number
-  memoryMax?: Prisma.IntFilter<"ServerStatusLog"> | number
-  memoryUsagePercent?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  onlinePlayers?: Prisma.IntFilter<"ServerStatusLog"> | number
-  maxPlayers?: Prisma.IntFilter<"ServerStatusLog"> | number
-  serverVersion?: Prisma.StringFilter<"ServerStatusLog"> | string
+  tps1m?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  tps5m?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  tps15m?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  memoryUsed?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  memoryMax?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  memoryUsagePercent?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  onlinePlayers?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  maxPlayers?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  motd?: Prisma.StringNullableFilter<"ServerStatusLog"> | string | null
+  version?: Prisma.StringNullableFilter<"ServerStatusLog"> | string | null
   timestamp?: Prisma.DateTimeFilter<"ServerStatusLog"> | Date | string
 }
 
 export type ServerStatusLogOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  tps1m?: Prisma.SortOrder
-  tps5m?: Prisma.SortOrder
-  tps15m?: Prisma.SortOrder
-  memoryUsed?: Prisma.SortOrder
-  memoryMax?: Prisma.SortOrder
-  memoryUsagePercent?: Prisma.SortOrder
-  onlinePlayers?: Prisma.SortOrder
-  maxPlayers?: Prisma.SortOrder
-  serverVersion?: Prisma.SortOrder
+  tps1m?: Prisma.SortOrderInput | Prisma.SortOrder
+  tps5m?: Prisma.SortOrderInput | Prisma.SortOrder
+  tps15m?: Prisma.SortOrderInput | Prisma.SortOrder
+  memoryUsed?: Prisma.SortOrderInput | Prisma.SortOrder
+  memoryMax?: Prisma.SortOrderInput | Prisma.SortOrder
+  memoryUsagePercent?: Prisma.SortOrderInput | Prisma.SortOrder
+  onlinePlayers?: Prisma.SortOrderInput | Prisma.SortOrder
+  maxPlayers?: Prisma.SortOrderInput | Prisma.SortOrder
+  motd?: Prisma.SortOrderInput | Prisma.SortOrder
+  version?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
 }
 
@@ -317,29 +326,31 @@ export type ServerStatusLogWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ServerStatusLogWhereInput | Prisma.ServerStatusLogWhereInput[]
   OR?: Prisma.ServerStatusLogWhereInput[]
   NOT?: Prisma.ServerStatusLogWhereInput | Prisma.ServerStatusLogWhereInput[]
-  tps1m?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  tps5m?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  tps15m?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  memoryUsed?: Prisma.IntFilter<"ServerStatusLog"> | number
-  memoryMax?: Prisma.IntFilter<"ServerStatusLog"> | number
-  memoryUsagePercent?: Prisma.FloatFilter<"ServerStatusLog"> | number
-  onlinePlayers?: Prisma.IntFilter<"ServerStatusLog"> | number
-  maxPlayers?: Prisma.IntFilter<"ServerStatusLog"> | number
-  serverVersion?: Prisma.StringFilter<"ServerStatusLog"> | string
+  tps1m?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  tps5m?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  tps15m?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  memoryUsed?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  memoryMax?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  memoryUsagePercent?: Prisma.FloatNullableFilter<"ServerStatusLog"> | number | null
+  onlinePlayers?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  maxPlayers?: Prisma.IntNullableFilter<"ServerStatusLog"> | number | null
+  motd?: Prisma.StringNullableFilter<"ServerStatusLog"> | string | null
+  version?: Prisma.StringNullableFilter<"ServerStatusLog"> | string | null
   timestamp?: Prisma.DateTimeFilter<"ServerStatusLog"> | Date | string
 }, "id">
 
 export type ServerStatusLogOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  tps1m?: Prisma.SortOrder
-  tps5m?: Prisma.SortOrder
-  tps15m?: Prisma.SortOrder
-  memoryUsed?: Prisma.SortOrder
-  memoryMax?: Prisma.SortOrder
-  memoryUsagePercent?: Prisma.SortOrder
-  onlinePlayers?: Prisma.SortOrder
-  maxPlayers?: Prisma.SortOrder
-  serverVersion?: Prisma.SortOrder
+  tps1m?: Prisma.SortOrderInput | Prisma.SortOrder
+  tps5m?: Prisma.SortOrderInput | Prisma.SortOrder
+  tps15m?: Prisma.SortOrderInput | Prisma.SortOrder
+  memoryUsed?: Prisma.SortOrderInput | Prisma.SortOrder
+  memoryMax?: Prisma.SortOrderInput | Prisma.SortOrder
+  memoryUsagePercent?: Prisma.SortOrderInput | Prisma.SortOrder
+  onlinePlayers?: Prisma.SortOrderInput | Prisma.SortOrder
+  maxPlayers?: Prisma.SortOrderInput | Prisma.SortOrder
+  motd?: Prisma.SortOrderInput | Prisma.SortOrder
+  version?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
   _count?: Prisma.ServerStatusLogCountOrderByAggregateInput
   _avg?: Prisma.ServerStatusLogAvgOrderByAggregateInput
@@ -353,110 +364,118 @@ export type ServerStatusLogScalarWhereWithAggregatesInput = {
   OR?: Prisma.ServerStatusLogScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ServerStatusLogScalarWhereWithAggregatesInput | Prisma.ServerStatusLogScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"ServerStatusLog"> | number
-  tps1m?: Prisma.FloatWithAggregatesFilter<"ServerStatusLog"> | number
-  tps5m?: Prisma.FloatWithAggregatesFilter<"ServerStatusLog"> | number
-  tps15m?: Prisma.FloatWithAggregatesFilter<"ServerStatusLog"> | number
-  memoryUsed?: Prisma.IntWithAggregatesFilter<"ServerStatusLog"> | number
-  memoryMax?: Prisma.IntWithAggregatesFilter<"ServerStatusLog"> | number
-  memoryUsagePercent?: Prisma.FloatWithAggregatesFilter<"ServerStatusLog"> | number
-  onlinePlayers?: Prisma.IntWithAggregatesFilter<"ServerStatusLog"> | number
-  maxPlayers?: Prisma.IntWithAggregatesFilter<"ServerStatusLog"> | number
-  serverVersion?: Prisma.StringWithAggregatesFilter<"ServerStatusLog"> | string
+  tps1m?: Prisma.FloatNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  tps5m?: Prisma.FloatNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  tps15m?: Prisma.FloatNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  memoryUsed?: Prisma.IntNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  memoryMax?: Prisma.IntNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  memoryUsagePercent?: Prisma.FloatNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  onlinePlayers?: Prisma.IntNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  maxPlayers?: Prisma.IntNullableWithAggregatesFilter<"ServerStatusLog"> | number | null
+  motd?: Prisma.StringNullableWithAggregatesFilter<"ServerStatusLog"> | string | null
+  version?: Prisma.StringNullableWithAggregatesFilter<"ServerStatusLog"> | string | null
   timestamp?: Prisma.DateTimeWithAggregatesFilter<"ServerStatusLog"> | Date | string
 }
 
 export type ServerStatusLogCreateInput = {
-  tps1m: number
-  tps5m: number
-  tps15m: number
-  memoryUsed: number
-  memoryMax: number
-  memoryUsagePercent: number
-  onlinePlayers: number
-  maxPlayers: number
-  serverVersion: string
+  tps1m?: number | null
+  tps5m?: number | null
+  tps15m?: number | null
+  memoryUsed?: number | null
+  memoryMax?: number | null
+  memoryUsagePercent?: number | null
+  onlinePlayers?: number | null
+  maxPlayers?: number | null
+  motd?: string | null
+  version?: string | null
   timestamp?: Date | string
 }
 
 export type ServerStatusLogUncheckedCreateInput = {
   id?: number
-  tps1m: number
-  tps5m: number
-  tps15m: number
-  memoryUsed: number
-  memoryMax: number
-  memoryUsagePercent: number
-  onlinePlayers: number
-  maxPlayers: number
-  serverVersion: string
+  tps1m?: number | null
+  tps5m?: number | null
+  tps15m?: number | null
+  memoryUsed?: number | null
+  memoryMax?: number | null
+  memoryUsagePercent?: number | null
+  onlinePlayers?: number | null
+  maxPlayers?: number | null
+  motd?: string | null
+  version?: string | null
   timestamp?: Date | string
 }
 
 export type ServerStatusLogUpdateInput = {
-  tps1m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps5m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps15m?: Prisma.FloatFieldUpdateOperationsInput | number
-  memoryUsed?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryMax?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryUsagePercent?: Prisma.FloatFieldUpdateOperationsInput | number
-  onlinePlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  maxPlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  serverVersion?: Prisma.StringFieldUpdateOperationsInput | string
+  tps1m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps5m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps15m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  memoryUsed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryUsagePercent?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  onlinePlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxPlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  motd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServerStatusLogUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tps1m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps5m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps15m?: Prisma.FloatFieldUpdateOperationsInput | number
-  memoryUsed?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryMax?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryUsagePercent?: Prisma.FloatFieldUpdateOperationsInput | number
-  onlinePlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  maxPlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  serverVersion?: Prisma.StringFieldUpdateOperationsInput | string
+  tps1m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps5m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps15m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  memoryUsed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryUsagePercent?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  onlinePlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxPlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  motd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServerStatusLogCreateManyInput = {
   id?: number
-  tps1m: number
-  tps5m: number
-  tps15m: number
-  memoryUsed: number
-  memoryMax: number
-  memoryUsagePercent: number
-  onlinePlayers: number
-  maxPlayers: number
-  serverVersion: string
+  tps1m?: number | null
+  tps5m?: number | null
+  tps15m?: number | null
+  memoryUsed?: number | null
+  memoryMax?: number | null
+  memoryUsagePercent?: number | null
+  onlinePlayers?: number | null
+  maxPlayers?: number | null
+  motd?: string | null
+  version?: string | null
   timestamp?: Date | string
 }
 
 export type ServerStatusLogUpdateManyMutationInput = {
-  tps1m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps5m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps15m?: Prisma.FloatFieldUpdateOperationsInput | number
-  memoryUsed?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryMax?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryUsagePercent?: Prisma.FloatFieldUpdateOperationsInput | number
-  onlinePlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  maxPlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  serverVersion?: Prisma.StringFieldUpdateOperationsInput | string
+  tps1m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps5m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps15m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  memoryUsed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryUsagePercent?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  onlinePlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxPlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  motd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ServerStatusLogUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tps1m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps5m?: Prisma.FloatFieldUpdateOperationsInput | number
-  tps15m?: Prisma.FloatFieldUpdateOperationsInput | number
-  memoryUsed?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryMax?: Prisma.IntFieldUpdateOperationsInput | number
-  memoryUsagePercent?: Prisma.FloatFieldUpdateOperationsInput | number
-  onlinePlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  maxPlayers?: Prisma.IntFieldUpdateOperationsInput | number
-  serverVersion?: Prisma.StringFieldUpdateOperationsInput | string
+  tps1m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps5m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tps15m?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  memoryUsed?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryMax?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  memoryUsagePercent?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  onlinePlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  maxPlayers?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  motd?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -470,7 +489,8 @@ export type ServerStatusLogCountOrderByAggregateInput = {
   memoryUsagePercent?: Prisma.SortOrder
   onlinePlayers?: Prisma.SortOrder
   maxPlayers?: Prisma.SortOrder
-  serverVersion?: Prisma.SortOrder
+  motd?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
 }
 
@@ -496,7 +516,8 @@ export type ServerStatusLogMaxOrderByAggregateInput = {
   memoryUsagePercent?: Prisma.SortOrder
   onlinePlayers?: Prisma.SortOrder
   maxPlayers?: Prisma.SortOrder
-  serverVersion?: Prisma.SortOrder
+  motd?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
 }
 
@@ -510,7 +531,8 @@ export type ServerStatusLogMinOrderByAggregateInput = {
   memoryUsagePercent?: Prisma.SortOrder
   onlinePlayers?: Prisma.SortOrder
   maxPlayers?: Prisma.SortOrder
-  serverVersion?: Prisma.SortOrder
+  motd?: Prisma.SortOrder
+  version?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
 }
 
@@ -538,7 +560,8 @@ export type ServerStatusLogSelect<ExtArgs extends runtime.Types.Extensions.Inter
   memoryUsagePercent?: boolean
   onlinePlayers?: boolean
   maxPlayers?: boolean
-  serverVersion?: boolean
+  motd?: boolean
+  version?: boolean
   timestamp?: boolean
 }, ExtArgs["result"]["serverStatusLog"]>
 
@@ -552,7 +575,8 @@ export type ServerStatusLogSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   memoryUsagePercent?: boolean
   onlinePlayers?: boolean
   maxPlayers?: boolean
-  serverVersion?: boolean
+  motd?: boolean
+  version?: boolean
   timestamp?: boolean
 }, ExtArgs["result"]["serverStatusLog"]>
 
@@ -566,7 +590,8 @@ export type ServerStatusLogSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   memoryUsagePercent?: boolean
   onlinePlayers?: boolean
   maxPlayers?: boolean
-  serverVersion?: boolean
+  motd?: boolean
+  version?: boolean
   timestamp?: boolean
 }, ExtArgs["result"]["serverStatusLog"]>
 
@@ -580,26 +605,28 @@ export type ServerStatusLogSelectScalar = {
   memoryUsagePercent?: boolean
   onlinePlayers?: boolean
   maxPlayers?: boolean
-  serverVersion?: boolean
+  motd?: boolean
+  version?: boolean
   timestamp?: boolean
 }
 
-export type ServerStatusLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tps1m" | "tps5m" | "tps15m" | "memoryUsed" | "memoryMax" | "memoryUsagePercent" | "onlinePlayers" | "maxPlayers" | "serverVersion" | "timestamp", ExtArgs["result"]["serverStatusLog"]>
+export type ServerStatusLogOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tps1m" | "tps5m" | "tps15m" | "memoryUsed" | "memoryMax" | "memoryUsagePercent" | "onlinePlayers" | "maxPlayers" | "motd" | "version" | "timestamp", ExtArgs["result"]["serverStatusLog"]>
 
 export type $ServerStatusLogPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ServerStatusLog"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    tps1m: number
-    tps5m: number
-    tps15m: number
-    memoryUsed: number
-    memoryMax: number
-    memoryUsagePercent: number
-    onlinePlayers: number
-    maxPlayers: number
-    serverVersion: string
+    tps1m: number | null
+    tps5m: number | null
+    tps15m: number | null
+    memoryUsed: number | null
+    memoryMax: number | null
+    memoryUsagePercent: number | null
+    onlinePlayers: number | null
+    maxPlayers: number | null
+    motd: string | null
+    version: string | null
     timestamp: Date
   }, ExtArgs["result"]["serverStatusLog"]>
   composites: {}
@@ -1033,7 +1060,8 @@ export interface ServerStatusLogFieldRefs {
   readonly memoryUsagePercent: Prisma.FieldRef<"ServerStatusLog", 'Float'>
   readonly onlinePlayers: Prisma.FieldRef<"ServerStatusLog", 'Int'>
   readonly maxPlayers: Prisma.FieldRef<"ServerStatusLog", 'Int'>
-  readonly serverVersion: Prisma.FieldRef<"ServerStatusLog", 'String'>
+  readonly motd: Prisma.FieldRef<"ServerStatusLog", 'String'>
+  readonly version: Prisma.FieldRef<"ServerStatusLog", 'String'>
   readonly timestamp: Prisma.FieldRef<"ServerStatusLog", 'DateTime'>
 }
     
@@ -1229,7 +1257,7 @@ export type ServerStatusLogCreateArgs<ExtArgs extends runtime.Types.Extensions.I
   /**
    * The data needed to create a ServerStatusLog.
    */
-  data: Prisma.XOR<Prisma.ServerStatusLogCreateInput, Prisma.ServerStatusLogUncheckedCreateInput>
+  data?: Prisma.XOR<Prisma.ServerStatusLogCreateInput, Prisma.ServerStatusLogUncheckedCreateInput>
 }
 
 /**

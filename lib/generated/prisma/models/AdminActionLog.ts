@@ -222,8 +222,8 @@ export type AdminActionLogGroupByOutputType = {
   targetUuid: string | null
   reason: string | null
   expiresAt: Date | null
-  adminId: string
-  adminName: string
+  adminId: string | null
+  adminName: string | null
   success: boolean
   details: string | null
   timestamp: Date
@@ -259,8 +259,8 @@ export type AdminActionLogWhereInput = {
   targetUuid?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   reason?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   expiresAt?: Prisma.DateTimeNullableFilter<"AdminActionLog"> | Date | string | null
-  adminId?: Prisma.StringFilter<"AdminActionLog"> | string
-  adminName?: Prisma.StringFilter<"AdminActionLog"> | string
+  adminId?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
+  adminName?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   success?: Prisma.BoolFilter<"AdminActionLog"> | boolean
   details?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   timestamp?: Prisma.DateTimeFilter<"AdminActionLog"> | Date | string
@@ -273,8 +273,8 @@ export type AdminActionLogOrderByWithRelationInput = {
   targetUuid?: Prisma.SortOrderInput | Prisma.SortOrder
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
   expiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  adminId?: Prisma.SortOrder
-  adminName?: Prisma.SortOrder
+  adminId?: Prisma.SortOrderInput | Prisma.SortOrder
+  adminName?: Prisma.SortOrderInput | Prisma.SortOrder
   success?: Prisma.SortOrder
   details?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -290,8 +290,8 @@ export type AdminActionLogWhereUniqueInput = Prisma.AtLeast<{
   targetUuid?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   reason?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   expiresAt?: Prisma.DateTimeNullableFilter<"AdminActionLog"> | Date | string | null
-  adminId?: Prisma.StringFilter<"AdminActionLog"> | string
-  adminName?: Prisma.StringFilter<"AdminActionLog"> | string
+  adminId?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
+  adminName?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   success?: Prisma.BoolFilter<"AdminActionLog"> | boolean
   details?: Prisma.StringNullableFilter<"AdminActionLog"> | string | null
   timestamp?: Prisma.DateTimeFilter<"AdminActionLog"> | Date | string
@@ -304,8 +304,8 @@ export type AdminActionLogOrderByWithAggregationInput = {
   targetUuid?: Prisma.SortOrderInput | Prisma.SortOrder
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
   expiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  adminId?: Prisma.SortOrder
-  adminName?: Prisma.SortOrder
+  adminId?: Prisma.SortOrderInput | Prisma.SortOrder
+  adminName?: Prisma.SortOrderInput | Prisma.SortOrder
   success?: Prisma.SortOrder
   details?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -326,8 +326,8 @@ export type AdminActionLogScalarWhereWithAggregatesInput = {
   targetUuid?: Prisma.StringNullableWithAggregatesFilter<"AdminActionLog"> | string | null
   reason?: Prisma.StringNullableWithAggregatesFilter<"AdminActionLog"> | string | null
   expiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AdminActionLog"> | Date | string | null
-  adminId?: Prisma.StringWithAggregatesFilter<"AdminActionLog"> | string
-  adminName?: Prisma.StringWithAggregatesFilter<"AdminActionLog"> | string
+  adminId?: Prisma.StringNullableWithAggregatesFilter<"AdminActionLog"> | string | null
+  adminName?: Prisma.StringNullableWithAggregatesFilter<"AdminActionLog"> | string | null
   success?: Prisma.BoolWithAggregatesFilter<"AdminActionLog"> | boolean
   details?: Prisma.StringNullableWithAggregatesFilter<"AdminActionLog"> | string | null
   timestamp?: Prisma.DateTimeWithAggregatesFilter<"AdminActionLog"> | Date | string
@@ -339,8 +339,8 @@ export type AdminActionLogCreateInput = {
   targetUuid?: string | null
   reason?: string | null
   expiresAt?: Date | string | null
-  adminId: string
-  adminName: string
+  adminId?: string | null
+  adminName?: string | null
   success: boolean
   details?: string | null
   timestamp?: Date | string
@@ -353,8 +353,8 @@ export type AdminActionLogUncheckedCreateInput = {
   targetUuid?: string | null
   reason?: string | null
   expiresAt?: Date | string | null
-  adminId: string
-  adminName: string
+  adminId?: string | null
+  adminName?: string | null
   success: boolean
   details?: string | null
   timestamp?: Date | string
@@ -366,8 +366,8 @@ export type AdminActionLogUpdateInput = {
   targetUuid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  adminId?: Prisma.StringFieldUpdateOperationsInput | string
-  adminName?: Prisma.StringFieldUpdateOperationsInput | string
+  adminId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  adminName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   success?: Prisma.BoolFieldUpdateOperationsInput | boolean
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -380,8 +380,8 @@ export type AdminActionLogUncheckedUpdateInput = {
   targetUuid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  adminId?: Prisma.StringFieldUpdateOperationsInput | string
-  adminName?: Prisma.StringFieldUpdateOperationsInput | string
+  adminId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  adminName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   success?: Prisma.BoolFieldUpdateOperationsInput | boolean
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -394,8 +394,8 @@ export type AdminActionLogCreateManyInput = {
   targetUuid?: string | null
   reason?: string | null
   expiresAt?: Date | string | null
-  adminId: string
-  adminName: string
+  adminId?: string | null
+  adminName?: string | null
   success: boolean
   details?: string | null
   timestamp?: Date | string
@@ -407,8 +407,8 @@ export type AdminActionLogUpdateManyMutationInput = {
   targetUuid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  adminId?: Prisma.StringFieldUpdateOperationsInput | string
-  adminName?: Prisma.StringFieldUpdateOperationsInput | string
+  adminId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  adminName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   success?: Prisma.BoolFieldUpdateOperationsInput | boolean
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -421,8 +421,8 @@ export type AdminActionLogUncheckedUpdateManyInput = {
   targetUuid?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  adminId?: Prisma.StringFieldUpdateOperationsInput | string
-  adminName?: Prisma.StringFieldUpdateOperationsInput | string
+  adminId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  adminName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   success?: Prisma.BoolFieldUpdateOperationsInput | boolean
   details?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -556,8 +556,8 @@ export type $AdminActionLogPayload<ExtArgs extends runtime.Types.Extensions.Inte
     targetUuid: string | null
     reason: string | null
     expiresAt: Date | null
-    adminId: string
-    adminName: string
+    adminId: string | null
+    adminName: string | null
     success: boolean
     details: string | null
     timestamp: Date

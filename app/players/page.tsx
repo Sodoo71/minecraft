@@ -1,63 +1,87 @@
-type Player = {
-  id: string;
-  username: string;
-  uuid: string;
-  x: number | null;
-  y: number | null;
-  z: number | null;
-  health: number | null;
-  level: number | null;
-  createdAt: string;
-  updatedAt: string;
-};
-
-async function getPlayers(): Promise<Player[]> {
-  const res = await fetch("http://localhost:3000/api/player", {
-    cache: "no-store", // realtime
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch players");
-  }
-
-  return res.json();
-}
+import type { Player, PlayerLog } from "@/lib/generated/prisma/client";
+import { prisma } from "@/lib/prisma";
 
 export default async function PlayerPage() {
-  const players = await getPlayers();
+  const players = await prisma.player.findMany({
+    orderBy: { updated: "desc" },
+  });
+  const recentLogs = await prisma.playerLog.findMany({
+    orderBy: { timestamp: "desc" },
+    take: 10,
+  });
 
   return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-2xl font-bold">Minecraft Players</h1>
+    <div className="space-y-8">
+      <h1 className="text-2xl font-bold">Players</h1>
 
-      <ul className="space-y-3">
-        {players.map((p) => (
-          <li
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {players.map((p: Player) => (
+          <div
             key={p.uuid}
-            className="border rounded-xl p-4 shadow-sm space-y-2"
+            className="border rounded-xl p-4 shadow-sm space-y-2 bg-white"
           >
-            <div className="flex justify-between">
-              <span className="font-semibold">{p.username}</span>
-              <span className="text-sm text-muted-foreground">
-                Level: {p.level ?? 0}
+            <div className="flex justify-between items-center">
+              <span className="font-semibold text-lg">{p.name}</span>
+              <span className="text-xs px-2 py-1 bg-gray-100 rounded-full">
+                {p.dimension}
               </span>
             </div>
 
-            <div className="text-sm">❤️ Health: {p.health ?? 0}</div>
-
-            <div className="text-sm">
-              📍 Position:{" "}
-              {p.x !== null
-                ? `${p.x?.toFixed(1)}, ${p.y?.toFixed(1)}, ${p.z?.toFixed(1)}`
-                : "Unknown"}
+            <div className="grid grid-cols-2 gap-2 text-sm">
+              <div>Health: {p.health}/20</div>
+              <div>Hunger: {p.hunger}/20</div>
+              <div>Level: {p.level}</div>
+              <div>
+                Pos: {p.x.toFixed(0)}, {p.y.toFixed(0)}, {p.z.toFixed(0)}
+              </div>
             </div>
 
-            <div className="text-xs text-muted-foreground">
-              Last Update: {new Date(p.updatedAt).toLocaleString()}
+            <div className="text-xs text-gray-500">
+              Updated: {new Date(p.updated).toLocaleString()}
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
+
+      <div>
+        <h2 className="text-xl font-bold mb-4">Recent Activity</h2>
+        <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 border-b">
+              <tr>
+                <th className="text-left px-4 py-2">Player</th>
+                <th className="text-left px-4 py-2">Action</th>
+                <th className="text-left px-4 py-2">World</th>
+                <th className="text-left px-4 py-2">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recentLogs.map((log: PlayerLog) => (
+                <tr key={log.id} className="border-b last:border-0">
+                  <td className="px-4 py-2 font-medium">{log.username}</td>
+                  <td className="px-4 py-2">
+                    <span
+                      className={`px-2 py-0.5 rounded-full text-xs ${
+                        log.action === "join"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-700"
+                      }`}
+                    >
+                      {log.action}
+                    </span>
+                  </td>
+                  <td className="px-4 py-2 text-gray-500">
+                    {log.world ?? "-"}
+                  </td>
+                  <td className="px-4 py-2 text-gray-500">
+                    {new Date(log.timestamp).toLocaleString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

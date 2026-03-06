@@ -20,14 +20,15 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild>
-                    <a href="/">
-                      <Home />
-                      <span>Home</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href="/">
+                    <Home />
+                    <span>Home</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <a href="/dashboard">
                     <LayoutDashboard />

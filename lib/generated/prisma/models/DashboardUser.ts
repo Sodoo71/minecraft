@@ -231,17 +231,17 @@ export type DashboardUserOrderByWithRelationInput = {
 export type DashboardUserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
-  username?: string
   AND?: Prisma.DashboardUserWhereInput | Prisma.DashboardUserWhereInput[]
   OR?: Prisma.DashboardUserWhereInput[]
   NOT?: Prisma.DashboardUserWhereInput | Prisma.DashboardUserWhereInput[]
+  username?: Prisma.StringFilter<"DashboardUser"> | string
   passwordHash?: Prisma.StringFilter<"DashboardUser"> | string
   role?: Prisma.StringFilter<"DashboardUser"> | string
   isActive?: Prisma.BoolFilter<"DashboardUser"> | boolean
   lastLoginAt?: Prisma.DateTimeNullableFilter<"DashboardUser"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"DashboardUser"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"DashboardUser"> | Date | string
-}, "id" | "email" | "username">
+}, "id" | "email">
 
 export type DashboardUserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

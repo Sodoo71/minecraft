@@ -280,9 +280,9 @@ export type PlayerLogWhereInput = {
   health?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
   level?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
   world?: Prisma.StringNullableFilter<"PlayerLog"> | string | null
-  x?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
-  y?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
-  z?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
+  x?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
+  y?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
+  z?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
   timestamp?: Prisma.DateTimeFilter<"PlayerLog"> | Date | string
 }
 
@@ -311,9 +311,9 @@ export type PlayerLogWhereUniqueInput = Prisma.AtLeast<{
   health?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
   level?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
   world?: Prisma.StringNullableFilter<"PlayerLog"> | string | null
-  x?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
-  y?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
-  z?: Prisma.IntNullableFilter<"PlayerLog"> | number | null
+  x?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
+  y?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
+  z?: Prisma.FloatNullableFilter<"PlayerLog"> | number | null
   timestamp?: Prisma.DateTimeFilter<"PlayerLog"> | Date | string
 }, "id">
 
@@ -347,9 +347,9 @@ export type PlayerLogScalarWhereWithAggregatesInput = {
   health?: Prisma.FloatNullableWithAggregatesFilter<"PlayerLog"> | number | null
   level?: Prisma.IntNullableWithAggregatesFilter<"PlayerLog"> | number | null
   world?: Prisma.StringNullableWithAggregatesFilter<"PlayerLog"> | string | null
-  x?: Prisma.IntNullableWithAggregatesFilter<"PlayerLog"> | number | null
-  y?: Prisma.IntNullableWithAggregatesFilter<"PlayerLog"> | number | null
-  z?: Prisma.IntNullableWithAggregatesFilter<"PlayerLog"> | number | null
+  x?: Prisma.FloatNullableWithAggregatesFilter<"PlayerLog"> | number | null
+  y?: Prisma.FloatNullableWithAggregatesFilter<"PlayerLog"> | number | null
+  z?: Prisma.FloatNullableWithAggregatesFilter<"PlayerLog"> | number | null
   timestamp?: Prisma.DateTimeWithAggregatesFilter<"PlayerLog"> | Date | string
 }
 
@@ -387,9 +387,9 @@ export type PlayerLogUpdateInput = {
   health?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   level?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   world?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  x?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  y?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  z?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  z?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -401,9 +401,9 @@ export type PlayerLogUncheckedUpdateInput = {
   health?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   level?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   world?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  x?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  y?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  z?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  z?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -428,9 +428,9 @@ export type PlayerLogUpdateManyMutationInput = {
   health?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   level?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   world?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  x?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  y?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  z?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  z?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -442,9 +442,9 @@ export type PlayerLogUncheckedUpdateManyInput = {
   health?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   level?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   world?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  x?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  y?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  z?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  x?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  y?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  z?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -1033,9 +1033,9 @@ export interface PlayerLogFieldRefs {
   readonly health: Prisma.FieldRef<"PlayerLog", 'Float'>
   readonly level: Prisma.FieldRef<"PlayerLog", 'Int'>
   readonly world: Prisma.FieldRef<"PlayerLog", 'String'>
-  readonly x: Prisma.FieldRef<"PlayerLog", 'Int'>
-  readonly y: Prisma.FieldRef<"PlayerLog", 'Int'>
-  readonly z: Prisma.FieldRef<"PlayerLog", 'Int'>
+  readonly x: Prisma.FieldRef<"PlayerLog", 'Float'>
+  readonly y: Prisma.FieldRef<"PlayerLog", 'Float'>
+  readonly z: Prisma.FieldRef<"PlayerLog", 'Float'>
   readonly timestamp: Prisma.FieldRef<"PlayerLog", 'DateTime'>
 }
     

@@ -1,12 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  output   = "../lib/generated/prisma"
 }
 
 datasource db {
@@ -14,15 +8,84 @@ datasource db {
 }
 
 model Player {
-  id        String   @id @default(cuid())
-  username  String
+  id        Int      @id @default(autoincrement())
   uuid      String   @unique
+  name      String
+  health    Float
+  hunger    Int
+  level     Int
+  dimension String
+  x         Float
+  y         Float
+  z         Float
+  updated   DateTime @default(now())
+  createdAt DateTime @default(now())
+}
+
+/// Player join/leave logs and snapshots
+model PlayerLog {
+  id        Int      @id @default(autoincrement())
+  uuid      String
+  username  String
+  action    String
+  health    Float?
+  level     Int?
+  world     String?
   x         Float?
   y         Float?
   z         Float?
-  health    Float?
-  level     Int?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  timestamp DateTime @default(now())
 }
 
+/// Admin action logs (kick, ban, op, etc.)
+model AdminActionLog {
+  id           Int       @id @default(autoincrement())
+  action       String
+  targetPlayer String
+  targetUuid   String?
+  reason       String?
+  expiresAt    DateTime?
+  adminId      String?
+  adminName    String?
+  success      Boolean
+  details      String?
+  timestamp    DateTime  @default(now())
+}
+
+/// Server status history for monitoring
+model ServerStatusLog {
+  id                 Int      @id @default(autoincrement())
+  tps1m              Float?
+  tps5m              Float?
+  tps15m             Float?
+  memoryUsed         Int?
+  memoryMax          Int?
+  memoryUsagePercent Float?
+  onlinePlayers      Int?
+  maxPlayers         Int?
+  motd               String?
+  version            String?
+  timestamp          DateTime @default(now())
+}
+
+model CommandQueue {
+  id         Int       @id @default(autoincrement())
+  type       String
+  target     String
+  reason     String?
+  executed   Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  executedAt DateTime?
+}
+
+model DashboardUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  username     String
+  passwordHash String
+  role         String    @default("viewer")
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}

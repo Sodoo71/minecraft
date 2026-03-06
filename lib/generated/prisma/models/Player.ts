@@ -291,9 +291,9 @@ export type PlayerWhereInput = {
   hunger?: Prisma.IntFilter<"Player"> | number
   level?: Prisma.IntFilter<"Player"> | number
   dimension?: Prisma.StringFilter<"Player"> | string
-  x?: Prisma.IntFilter<"Player"> | number
-  y?: Prisma.IntFilter<"Player"> | number
-  z?: Prisma.IntFilter<"Player"> | number
+  x?: Prisma.FloatFilter<"Player"> | number
+  y?: Prisma.FloatFilter<"Player"> | number
+  z?: Prisma.FloatFilter<"Player"> | number
   updated?: Prisma.DateTimeFilter<"Player"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Player"> | Date | string
 }
@@ -324,9 +324,9 @@ export type PlayerWhereUniqueInput = Prisma.AtLeast<{
   hunger?: Prisma.IntFilter<"Player"> | number
   level?: Prisma.IntFilter<"Player"> | number
   dimension?: Prisma.StringFilter<"Player"> | string
-  x?: Prisma.IntFilter<"Player"> | number
-  y?: Prisma.IntFilter<"Player"> | number
-  z?: Prisma.IntFilter<"Player"> | number
+  x?: Prisma.FloatFilter<"Player"> | number
+  y?: Prisma.FloatFilter<"Player"> | number
+  z?: Prisma.FloatFilter<"Player"> | number
   updated?: Prisma.DateTimeFilter<"Player"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Player"> | Date | string
 }, "id" | "uuid">
@@ -362,9 +362,9 @@ export type PlayerScalarWhereWithAggregatesInput = {
   hunger?: Prisma.IntWithAggregatesFilter<"Player"> | number
   level?: Prisma.IntWithAggregatesFilter<"Player"> | number
   dimension?: Prisma.StringWithAggregatesFilter<"Player"> | string
-  x?: Prisma.IntWithAggregatesFilter<"Player"> | number
-  y?: Prisma.IntWithAggregatesFilter<"Player"> | number
-  z?: Prisma.IntWithAggregatesFilter<"Player"> | number
+  x?: Prisma.FloatWithAggregatesFilter<"Player"> | number
+  y?: Prisma.FloatWithAggregatesFilter<"Player"> | number
+  z?: Prisma.FloatWithAggregatesFilter<"Player"> | number
   updated?: Prisma.DateTimeWithAggregatesFilter<"Player"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Player"> | Date | string
 }
@@ -405,9 +405,9 @@ export type PlayerUpdateInput = {
   hunger?: Prisma.IntFieldUpdateOperationsInput | number
   level?: Prisma.IntFieldUpdateOperationsInput | number
   dimension?: Prisma.StringFieldUpdateOperationsInput | string
-  x?: Prisma.IntFieldUpdateOperationsInput | number
-  y?: Prisma.IntFieldUpdateOperationsInput | number
-  z?: Prisma.IntFieldUpdateOperationsInput | number
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  z?: Prisma.FloatFieldUpdateOperationsInput | number
   updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -420,9 +420,9 @@ export type PlayerUncheckedUpdateInput = {
   hunger?: Prisma.IntFieldUpdateOperationsInput | number
   level?: Prisma.IntFieldUpdateOperationsInput | number
   dimension?: Prisma.StringFieldUpdateOperationsInput | string
-  x?: Prisma.IntFieldUpdateOperationsInput | number
-  y?: Prisma.IntFieldUpdateOperationsInput | number
-  z?: Prisma.IntFieldUpdateOperationsInput | number
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  z?: Prisma.FloatFieldUpdateOperationsInput | number
   updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -449,9 +449,9 @@ export type PlayerUpdateManyMutationInput = {
   hunger?: Prisma.IntFieldUpdateOperationsInput | number
   level?: Prisma.IntFieldUpdateOperationsInput | number
   dimension?: Prisma.StringFieldUpdateOperationsInput | string
-  x?: Prisma.IntFieldUpdateOperationsInput | number
-  y?: Prisma.IntFieldUpdateOperationsInput | number
-  z?: Prisma.IntFieldUpdateOperationsInput | number
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  z?: Prisma.FloatFieldUpdateOperationsInput | number
   updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -464,9 +464,9 @@ export type PlayerUncheckedUpdateManyInput = {
   hunger?: Prisma.IntFieldUpdateOperationsInput | number
   level?: Prisma.IntFieldUpdateOperationsInput | number
   dimension?: Prisma.StringFieldUpdateOperationsInput | string
-  x?: Prisma.IntFieldUpdateOperationsInput | number
-  y?: Prisma.IntFieldUpdateOperationsInput | number
-  z?: Prisma.IntFieldUpdateOperationsInput | number
+  x?: Prisma.FloatFieldUpdateOperationsInput | number
+  y?: Prisma.FloatFieldUpdateOperationsInput | number
+  z?: Prisma.FloatFieldUpdateOperationsInput | number
   updated?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1070,9 +1070,9 @@ export interface PlayerFieldRefs {
   readonly hunger: Prisma.FieldRef<"Player", 'Int'>
   readonly level: Prisma.FieldRef<"Player", 'Int'>
   readonly dimension: Prisma.FieldRef<"Player", 'String'>
-  readonly x: Prisma.FieldRef<"Player", 'Int'>
-  readonly y: Prisma.FieldRef<"Player", 'Int'>
-  readonly z: Prisma.FieldRef<"Player", 'Int'>
+  readonly x: Prisma.FieldRef<"Player", 'Float'>
+  readonly y: Prisma.FieldRef<"Player", 'Float'>
+  readonly z: Prisma.FieldRef<"Player", 'Float'>
   readonly updated: Prisma.FieldRef<"Player", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Player", 'DateTime'>
 }
