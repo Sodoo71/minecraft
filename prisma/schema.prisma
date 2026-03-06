@@ -6,125 +6,23 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  output   = "../app/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-// =========================================
-// Minecraft Player Data Models
-// =========================================
-
 model Player {
-  id        Int      @id @default(autoincrement())
-  uuid      String   @unique
-  name      String
-  health    Float
-  hunger    Int
-  level     Int
-  dimension String
-  x         Int
-  y         Int
-  z         Int
-  updated   DateTime @updatedAt
-  createdAt DateTime @default(now())
-}
-
-// =========================================
-// Logging Models
-// =========================================
-
-/// Player join/leave logs and snapshots
-model PlayerLog {
-  id        Int      @id @default(autoincrement())
-  uuid      String
+  id        String   @id @default(cuid())
   username  String
-  action    String // JOIN, LEAVE, ONLINE_SNAPSHOT
+  uuid      String   @unique
+  x         Float?
+  y         Float?
+  z         Float?
   health    Float?
   level     Int?
-  world     String?
-  x         Int?
-  y         Int?
-  z         Int?
-  timestamp DateTime @default(now())
-
-  @@index([uuid])
-  @@index([timestamp])
-  @@index([action])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-/// Admin action logs (kick, ban, op, etc.)
-model AdminActionLog {
-  id           Int       @id @default(autoincrement())
-  action       String // KICK, BAN, OP, UNBAN, etc.
-  targetPlayer String
-  targetUuid   String?
-  reason       String?
-  expiresAt    DateTime?
-  adminId      String
-  adminName    String
-  success      Boolean
-  details      String? // JSON string with additional info
-  timestamp    DateTime  @default(now())
-
-  @@index([action])
-  @@index([targetPlayer])
-  @@index([timestamp])
-  @@index([adminId])
-}
-
-/// Server status history for monitoring
-model ServerStatusLog {
-  id                 Int      @id @default(autoincrement())
-  tps1m              Float
-  tps5m              Float
-  tps15m             Float
-  memoryUsed         Int // MB
-  memoryMax          Int // MB
-  memoryUsagePercent Float
-  onlinePlayers      Int
-  maxPlayers         Int
-  serverVersion      String
-  timestamp          DateTime @default(now())
-
-  @@index([timestamp])
-  @@index([onlinePlayers])
-}
-
-// =========================================
-// Command Queue (for plugin communication)
-// =========================================
-
-model CommandQueue {
-  id         Int       @id @default(autoincrement())
-  type       String // ban | kick | msg | op
-  target     String // player name
-  reason     String?
-  executed   Boolean   @default(false)
-  createdAt  DateTime  @default(now())
-  executedAt DateTime?
-
-  @@index([executed])
-  @@index([createdAt])
-}
-
-// =========================================
-// Dashboard User Management
-// =========================================
-
-model DashboardUser {
-  id           String    @id @default(cuid())
-  email        String    @unique
-  username     String    @unique
-  passwordHash String
-  role         String    @default("admin") // admin, moderator, viewer
-  isActive     Boolean   @default(true)
-  lastLoginAt  DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-
-  @@index([email])
-  @@index([role])
-}

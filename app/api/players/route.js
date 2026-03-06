@@ -43,7 +43,9 @@ export default async function PlayerPage() {
               </span>
             </div>
 
-            <div className="text-sm">❤️ Health: {p.health ?? 0}</div>
+            <div className="text-sm">
+              ❤️ Health: {p.health ?? 0}
+            </div>
 
             <div className="text-sm">
               📍 Position:{" "}
